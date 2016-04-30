@@ -10,19 +10,17 @@ app.get('/api/survey', function(req, res){
 
 app.post('/api/survey', function(req, res){
 
-	allFriends.push(req.body);
+	var newFriend = req.body;
 
-	//LOGIC
+	// newFriend.answers[0]
 
-		// if(tableData.length < 5 ){
-		// 	allFriends.push(req.body);
-		// 	res.json(true); // KEY LINE
-		// }
+	console.log(allFriends[2]);
 
-		// else{
-		// 	waitListData.push(req.body);
-		// 	res.json(false); // KEY LINE
-		// }
+	allFriends.push(newFriend);
+
+
+
+
 
 	});
 }
