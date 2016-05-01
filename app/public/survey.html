@@ -12,6 +12,17 @@
 
 </head>
 <body>
+
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+    		<div class="btn-group" role="group" aria-label="...">
+			  	<a class="btn btn-default" href="/" role="button">Home</a>
+			  	<a class="btn btn-default" href="/api/survey" role="button">API</a>
+			  	<a class="btn btn-default" href="https://github.com/jcarless/FriendFinder" role="button">GitHub Repo</a>
+			</div>
+  		</div>
+	</nav>
+
 	<div class="container-fluid">
 		<div class="col-md-6">
 
@@ -182,10 +193,10 @@
 	        <h2>Your Match</h2>
 	      </div>
 	      <div class="modal-body">
-	        <h4>Picture</h4>
+	        <h4 id="matchName">Your Match</h4>
 	      </div>
-	      <div class="modal-footer">
-	       	<h4>Name</h4>
+	      <div class="modal-body">
+	        <h4 id="matchPhoto">Picture</h4>
 	      </div>
 	    </div>
 
@@ -201,6 +212,9 @@
 	var userData = '';
 	var compare = [];
 	var compareAll = [];
+	var dif = 100;
+	var leastDifference = 100;
+	var bestMatch = {};
 	
 	$('.submit').on('click', function(){
 		
@@ -225,21 +239,29 @@
 		.done(function(response) {
 
 for (var f = 0; f < response.length; f++) {
-		for (var i = 0; i <= 9; i++) {
-			
-				compare.push(Math.abs(parseInt(userData.answers[i]) - parseInt(response[f].answers[i])));
-				
+			dif = 100;
 
+		for (var i = 0; i <= 9; i++) {
+			dif -= (Math.abs(parseInt(userData.answers[i]) - parseInt(response[f].answers[i])));
+
+			if ( dif < leastDifference) {
+				leastDifference = dif;
+
+				bestMatch = {
+					name: response[f].name,
+					photo: response[f].photo
+					};
+				}
 			}
-			compareAll.push(compare);
+		console.log(leastDifference);
+		console.log(bestMatch);
 
 		};
 
-			// console.log(userData);
-			// console.log(response);
-			console.log(compareAll);
+		$('#matchName').html(bestMatch.name);
+		$('#matchPhoto').html(bestMatch.photo);
 
-	
+
 
 		}) //.done
 
