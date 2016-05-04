@@ -14,7 +14,7 @@ app.post('/api/survey', function(req, res){
 
 	// newFriend.answers[0]
 
-	// console.log(allFriends);
+	console.log(allFriends);
 
 	allFriends.push(newFriend);
 

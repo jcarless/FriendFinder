@@ -1,9 +1,9 @@
-var userData = '';
+var userData = "";
 var dif = 100;
 var leastDifference = 100;
 
 $('.submit').on('click', function(){
-	
+
 	userData = {
 		name: $('#name').val().trim(),
 		photo: $('#imgLink').val().trim(),

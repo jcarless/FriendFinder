@@ -7,7 +7,6 @@ var app = express();
 var PORT = process.env.PORT || 3333; 
 
 
-
 var staticContentFolder = __dirname + '/public';
 
 app.use(express.static(staticContentFolder)); 
