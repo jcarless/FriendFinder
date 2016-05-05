@@ -7,8 +7,8 @@ var app = express();
 var PORT = process.env.PORT || 3333; 
 
 
-var staticContentFolder = __dirname + '/public';
-
+var staticContentFolder = __dirname + '/app/public';
+console.log(staticContentFolder);
 app.use(express.static(staticContentFolder)); 
 
 app.use(bodyParser.json());
