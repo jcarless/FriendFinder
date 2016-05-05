@@ -245,7 +245,7 @@
 						for (var i = 0; i <= 9; i++) {
 							dif -= (Math.abs(parseInt(userData.answers[i]) - parseInt(response[f].answers[i])));
 
-								if ( dif < leastDifference) {
+								if ( dif <= leastDifference) {
 									leastDifference = dif;
 
 										bestMatch = {
@@ -259,7 +259,8 @@
 				};
 
 			$('#matchName').html(bestMatch.name);
-			$('#matchPhoto').html(bestMatch.photo);
+			var image = $("<img>").attr("src", bestMatch.photo);
+			$('#matchPhoto').html(image);
 			console.log(bestMatch.name + " " + bestMatch.photo);
 
 			}) //.done
