@@ -243,19 +243,24 @@
 					dif = 100;
 
 						for (var i = 0; i <= 9; i++) {
-							dif -= (Math.abs(parseInt(userData.answers[i]) - parseInt(response[f].answers[i])));
+							var num = i + 1;
+							var num2 = "'"+num+"'";
+							dif -= (Math.abs(parseInt(userData.answers[i]) - parseInt(response[f].answer + (i+1))));
+							console.log(('response[f].answer' + num));
+							// console.log(num);
+							if ( dif < leastDifference) {
+								leastDifference = dif;
 
-								if ( dif <= leastDifference) {
-									leastDifference = dif;
+									bestMatch = {
+									name: response[f].name,
+									photo: response[f].photo
+									};
+									// console.log(bestMatch);
+							}
 
-										bestMatch = {
-										name: response[f].name,
-										photo: response[f].photo
-										};
-								}
 						}
-			console.log(leastDifference);
-			console.log(bestMatch);
+			// console.log(leastDifference);
+			// console.log(bestMatch);
 				};
 
 			$('#matchName').html(bestMatch.name);
